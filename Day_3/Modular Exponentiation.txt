@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.* ;
+
+public class Solution {
+    public static int modularExponentiation(int x, int n, int m) {
+        // Write your code here.        
+        long X = x;
+        long ans = 1;
+  
+        while(n>0){
+            if(n%2 == 1){
+                ans =(ans * X%m)%m;
+                n = n - 1;
+            }else{
+                X = (X%m * X%m)%m;
+                n = n / 2;
+            }
+        }
+     
+        ans = ans % m;
+        return (int)ans;
+    }
+}
