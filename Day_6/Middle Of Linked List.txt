@@ -1,0 +1,50 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution
+{
+    public static Node findMiddle(Node head)
+    {
+        // Write your code here.
+        int l = 0;
+        Node start = head;
+        
+        while(start != null){
+            start = start.next;
+            l++;
+        }
+        
+        start = head;
+        
+        int c=0;
+        while(c<l/2){
+            start = start.next;
+            c++;
+        }
+        return start;
+    }
+}
