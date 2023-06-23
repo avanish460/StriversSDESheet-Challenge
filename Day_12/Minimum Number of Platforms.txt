@@ -1,0 +1,22 @@
+import java.util.*;
+public class Solution {
+    public static int calculateMinPatforms(int at[], int dt[], int n) {
+        // Write your code here.
+        Arrays.sort(at);
+        Arrays.sort(dt);
+        int i=1, j=0, result = 1, no_of_platform = 1;
+        while(i<n && j<n){
+            if(at[i]<=dt[j]){
+                no_of_platform++;
+                i++;
+            }else if(at[i]>dt[j]){
+                no_of_platform--;
+                j++;
+            }
+            if(result<no_of_platform){
+                result = no_of_platform;
+            }
+        }
+        return result;
+    }
+}

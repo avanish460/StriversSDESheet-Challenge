@@ -1,0 +1,19 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution
+{
+public static int findMinimumCoins(int amount)
+    {
+        // Write your code here.
+        int indCurr[] = {1,2,5,10,20,50,100,500,1000};
+    ArrayList<Integer> ans = new ArrayList<>();
+    for(int i=indCurr.length-1; i>=0; i--){
+        while(amount>=indCurr[i]){
+            amount -= indCurr[i];
+            ans.add(indCurr[i]);
+        }
+           
+    }
+    return ans.size();
+    }
+}
