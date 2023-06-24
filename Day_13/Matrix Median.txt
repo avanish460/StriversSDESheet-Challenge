@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Solution
+{
+	public static int getMedian(ArrayList<ArrayList<Integer>> A)
+	{
+		// Write your code here.
+		int m = A.size(), n = A.get(0).size();
+    int min = 0, max = 0;
+    
+    for(int i=0; i<m; i++){
+        
+        min = Math.min(min, A.get(i).get(0));
+        max = Math.max(max, A.get(i).get(n-1));
+    }
+    
+    int median = (1 + m * n) / 2;
+    
+    while(min < max){
+        
+        int mid = min + (max - min)/2;
+        
+        int count = 0, get = 0;
+        
+        for(int i=0; i<m; i++){
+            
+            get = Collections.binarySearch(A.get(i), mid);
+            
+            if(get < 0){
+                get = Math.abs(get) - 1;
+            }
+            else{
+                while(get < n && A.get(i).get(get) == mid)
+                    get++;
+            }
+            
+            count = count + get;
+        }
+        
+        if(count < median)
+            min = mid + 1;
+        else 
+            max = mid;
+    }
+    
+    return min;
+	}
+}
