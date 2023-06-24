@@ -1,0 +1,43 @@
+public class Solution {
+    public static int search(int nums[], int target) {
+        // Write your code here.
+        int n = nums.length;
+        int left = 0;
+        int right = n-1;
+        if(nums[left]>nums[right]){
+            
+            while(left<right){
+                int mid = left + (right-left)/2;
+                if(nums[right]>nums[mid]){
+                    right = mid;
+                }else{
+                    left = mid+1;
+                }
+            }
+            }
+            int min = left;
+            left = 0;
+            right = n-1;
+            if(target == nums[min]){
+                return min;
+            }
+            if(target>nums[right]){
+                right = min-1;
+            }else{
+                left = min+1;
+            }    
+        
+        
+        while(left<=right){
+            int mid = left + (right-left)/2;
+            if(nums[mid] == target){
+                return mid;
+            }else if(nums[mid]>target){
+                right = mid-1;
+            }else{
+                left = mid+1;
+            }
+        }
+      return -1;
+    }
+}
